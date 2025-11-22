@@ -25,12 +25,14 @@ endif
 
 # product/app
 PRODUCT_PACKAGES += \
+    CalculatorGooglePrebuilt_85006267 \
+    GoogleContacts \
     GoogleTTS \
     LatinIMEGooglePrebuilt \
     LocationHistoryPrebuilt \
-    MarkupGoogle \
+    MarkupGoogle_v2 \
     PixelThemesStub2025_and_newer \
-    SoundPickerPrebuilt \
+    SoundPickerPrebuilt_33000062 \
     TrichromeLibrary \
     TrichromeLibrary-Stub \
     WebViewGoogle \
@@ -40,75 +42,51 @@ PRODUCT_PACKAGES += \
 # product/priv-app
 PRODUCT_PACKAGES += \
     AndroidAutoStubPrebuilt \
+    BetterBugStub \
     ConfigUpdater \
-    CreativeAssistant \
+    CustomizationBundlePrebuilt \
     DevicePersonalizationPrebuiltPixel2020 \
+    GoogleDialer \
     GoogleOneTimeInitializer \
-    GoogleRestorePrebuilt \
+    GoogleRestorePrebuilt-v793553 \
+    KidsSupervisionStub \
+    MaestroPrebuilt \
     OdadPrebuilt \
     PartnerSetupPrebuilt \
     Phonesky \
-    PrebuiltDeskClockGoogle \
+    PrebuiltBugle \
+    PrebuiltDeskClockGoogle_76007351 \
     PrebuiltPixelCoreServices \
     SettingsIntelligenceGooglePrebuilt \
-    SetupWizardPrebuilt \
+    SetupWizardPrebuilt_bd3a \
     TurboPrebuilt
-
-TARGET_SUPPORTS_GOOGLE_TELEPHONY ?= true
-ifeq ($(TARGET_SUPPORTS_GOOGLE_TELEPHONY),true)
-PRODUCT_PACKAGES += \
-    GoogleContacts \
-    GoogleDialer \
-    PrebuiltBugle
-endif
-
-TARGET_INCLUDE_PHOTOS ?= false
-ifeq ($(TARGET_INCLUDE_PHOTOS),true)
-PRODUCT_PACKAGES += \
-    Photos
-endif
-
-TARGET_INCLUDE_WEATHER ?= false
-ifeq ($(TARGET_INCLUDE_WEATHER),true)
-PRODUCT_PACKAGES += \
-    WeatherPixelPrebuilt
-endif
-
-TARGET_SUPPORTS_GOOGLE_FILES ?= false
-ifeq ($(TARGET_SUPPORTS_GOOGLE_FILES),true)
-PRODUCT_PACKAGES += \
-    DocumentsUIGoogle \
-    FilesPrebuilt 
-endif
-
-TARGET_SUPPORTS_GOOGLE_RECORDER ?= false
-ifeq ($(TARGET_SUPPORTS_GOOGLE_RECORDER),true)
-PRODUCT_PACKAGES += \
-    RecorderPrebuilt
-endif
-
 
 ifneq ($(filter sailfish marlin walleye taimen blueline crosshatch sargo bonito flame coral sunfish bramble redfin barbet oriole raven bluejay panther cheetah lynx tangorpro felix shiba husky akita tokay caiman komodo comet tegu frankel blazer mustang, $(LINEAGE_BUILD)),)
 PRODUCT_PACKAGES += \
-    SCONE
+    SCONE-v49580
 endif
 
 ifneq ($(filter flame coral redfin oriole raven panther cheetah lynx felix shiba husky akita tokay caiman komodo tegu frankel blazer mustang, $(LINEAGE_BUILD)),)
 PRODUCT_PACKAGES += \
-    DreamlinerDreamsPrebuilt \
-    DreamlinerPrebuilt \
+    DreamlinerDreamsPrebuilt_100894 \
+    DreamlinerPrebuilt_22000020 \
     DreamlinerUpdater
 endif
 
 ifneq ($(filter husky akita tokay caiman komodo frankel blazer mustang, $(LINEAGE_BUILD)),)
 PRODUCT_PACKAGES += \
-    HealthIntelligencePrebuilt
+    HealthIntelligencePrebuilt-1
 endif
 
 # system/app
 PRODUCT_PACKAGES += \
     GoogleExtShared \
     GooglePrintRecommendationService
+
+# system/priv-app
+PRODUCT_PACKAGES += \
+    DocumentsUIGoogle \
+    TagGoogle
 
 # system_ext/app
 PRODUCT_PACKAGES += \
@@ -122,8 +100,7 @@ PRODUCT_PACKAGES += \
     GoogleServicesFramework \
     MoseyApp \
     NexusLauncherRelease \
-    SetupWizardPixelPrebuilt \
-    QuickAccessWallet \
+    SetupWizardPixelPrebuilt_bd3a \
     WallpaperPickerGoogleRelease
 
 # PrebuiltGmsCore
@@ -141,10 +118,6 @@ PRODUCT_PACKAGES += \
     MlkitBarcodeUIPrebuilt \
     TfliteDynamitePrebuilt \
     VisionBarcodePrebuilt
-
-# Safety Information
-#PRODUCT_PACKAGES += \
-#    SafetyRegulatoryInfo
 
 $(call inherit-product, vendor/gms/product/blobs/product_blobs.mk)
 $(call inherit-product, vendor/gms/system/blobs/system_blobs.mk)
